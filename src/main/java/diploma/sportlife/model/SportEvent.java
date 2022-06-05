@@ -33,7 +33,7 @@ public class SportEvent {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @EqualsAndHashCode.Exclude
-    private Profile profile;
+    private User user;
 
     @Column(name = "town")
     private String town;

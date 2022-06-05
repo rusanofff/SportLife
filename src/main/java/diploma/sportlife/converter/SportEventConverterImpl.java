@@ -2,7 +2,7 @@ package diploma.sportlife.converter;
 
 import diploma.sportlife.model.Activity;
 import diploma.sportlife.model.SportEvent;
-import diploma.sportlife.model.Profile;
+import diploma.sportlife.model.User;
 import diploma.sportlife.web.model.SportEventDto;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ public class SportEventConverterImpl implements ConverterInterface<SportEventDto
                 dto.getSportEventType(),
                 dto.getStartDate(),
                 dto.getDescription(),
-                Profile.builder().id(dto.getProfileId()).build(),
+                User.builder().id(dto.getProfileId()).build(),
                 dto.getTown(),
                 dto.getLongitude(),
                 dto.getLatitude(),
@@ -33,7 +33,7 @@ public class SportEventConverterImpl implements ConverterInterface<SportEventDto
                 model.getName(),
                 model.getStartDate(),
                 model.getSportEventType().toString(),
-                model.getProfile().getId(),
+                model.getUser().getId(),
                 model.getTown(),
                 model.getLongitude(),
                 model.getLatitude(),

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ProfileTeam {
+public class UserTeam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -20,7 +20,7 @@ public class ProfileTeam {
 
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    private Profile profile;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)

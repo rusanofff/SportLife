@@ -12,7 +12,7 @@ import javax.validation.constraints.Null;
 import java.util.Date;
 
 @Value
-public class ProfileDto {
+public class UserDto {
     @Null
     Integer id;
 
@@ -49,16 +49,16 @@ public class ProfileDto {
     Byte[] image;
 
     @JsonCreator
-    public ProfileDto(@JsonProperty("id") Integer id,
-                       @JsonProperty("name") String name,
-                       @JsonProperty("surname") String surname,
-                       @JsonProperty("password") String password,
-                       @JsonProperty("email") String email,
-                       @JsonProperty("phone") String phone,
-                       @JsonProperty("description") String description,
-                       @JsonProperty("town") String town,
-                       @JsonProperty("dateOfBirth") Date dateOfBirth,
-                       @JsonProperty("image") Byte[] image) {
+    public UserDto(@JsonProperty("id") Integer id,
+                   @JsonProperty("name") String name,
+                   @JsonProperty("surname") String surname,
+                   @JsonProperty("password") String password,
+                   @JsonProperty("email") String email,
+                   @JsonProperty("phone") String phone,
+                   @JsonProperty("description") String description,
+                   @JsonProperty("town") String town,
+                   @JsonProperty("dateOfBirth") Date dateOfBirth,
+                   @JsonProperty("image") Byte[] image) {
         this.id = id;
         this.name = name;
         this.surname = surname;

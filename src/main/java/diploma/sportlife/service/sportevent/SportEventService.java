@@ -2,7 +2,9 @@ package diploma.sportlife.service.sportevent;
 
 import diploma.sportlife.model.SportEvent;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 public interface SportEventService {
     List<SportEvent> readAll();
@@ -16,4 +18,7 @@ public interface SportEventService {
     SportEvent deleteById(Integer id);
 
     void assertSportEventExists(Integer id);
+
+    List<SportEvent> getSportEventByFilters(Optional<Integer> activityId, Optional<Timestamp> startDate, Optional<String> town,
+                                            Optional<Integer> author);
 }

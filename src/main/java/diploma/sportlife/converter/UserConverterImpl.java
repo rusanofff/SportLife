@@ -1,16 +1,14 @@
 package diploma.sportlife.converter;
 
-import diploma.sportlife.model.Activity;
-import diploma.sportlife.model.Profile;
-import diploma.sportlife.web.model.ActivityDto;
-import diploma.sportlife.web.model.ProfileDto;
+import diploma.sportlife.model.User;
+import diploma.sportlife.web.model.UserDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProfileConverterImpl implements ConverterInterface<ProfileDto, Profile>{
+public class UserConverterImpl implements ConverterInterface<UserDto, User>{
     @Override
-    public Profile fromDto(ProfileDto dto) {
-        return new Profile(
+    public User fromDto(UserDto dto) {
+        return new User(
                 dto.getId(),
                 dto.getName(),
                 dto.getSurname(),
@@ -24,8 +22,8 @@ public class ProfileConverterImpl implements ConverterInterface<ProfileDto, Prof
     }
 
     @Override
-    public ProfileDto toDto(Profile model) {
-        return new ProfileDto(
+    public UserDto toDto(User model) {
+        return new UserDto(
                 model.getId(),
                 model.getName(),
                 model.getSurname(),

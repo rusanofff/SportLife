@@ -3,28 +3,29 @@ package diploma.sportlife.service.sportevent;
 import diploma.sportlife.exception.EntityAlreadyExistsException;
 import diploma.sportlife.exception.notfound.SportEventNotFoundException;
 import diploma.sportlife.model.Activity;
-import diploma.sportlife.model.Profile;
+import diploma.sportlife.model.User;
 import diploma.sportlife.model.SportEvent;
 import diploma.sportlife.repository.SportEventRepository;
 import diploma.sportlife.service.activity.ActivityService;
-import diploma.sportlife.service.profile.ProfileService;
+import java.sql.Timestamp;
+import java.util.Optional;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class SportEventServiceImpl implements SportEventService{
     private final SportEventRepository sportEventRepository;
-    private final ProfileService profileService;
+    private final diploma.sportlife.service.user.UserService userService;
     private final ActivityService activityService;
 
     public SportEventServiceImpl(SportEventRepository sportEventRepository,
-                                 ProfileService profileService,
+                                 diploma.sportlife.service.user.UserService userService,
                                  ActivityService activityService) {
         this.sportEventRepository = sportEventRepository;
-        this.profileService = profileService;
+        this.userService = userService;
         this.activityService = activityService;
     }
 
@@ -40,9 +41,9 @@ public class SportEventServiceImpl implements SportEventService{
 
     @Override
     public SportEvent insertSportEvent(SportEvent sportEvent) {
-        Profile profile = sportEvent.getProfile();
-        Integer profileId = profile.getId();
-        profileService.assertProfileExists(profileId);
+        User user = sportEvent.getUser();
+        Integer profileId = user.getId();
+        userService.assertUserExists(profileId);
 
         Activity activity = sportEvent.getActivity();
         Integer activityId  = activity.getId();
@@ -60,8 +61,8 @@ public class SportEventServiceImpl implements SportEventService{
     public SportEvent putById(Integer id, SportEvent givenSportEvent) {
         assertSportEventExists(id);
 
-        Integer profileIdFromJson = givenSportEvent.getProfile().getId();
-        profileService.assertProfileExists(profileIdFromJson);
+        Integer profileIdFromJson = givenSportEvent.getUser().getId();
+        userService.assertUserExists(profileIdFromJson);
 
         Integer activityIdFromJson = givenSportEvent.getActivity().getId();
         activityService.assertActivityExists(activityIdFromJson);
@@ -90,5 +91,43 @@ public class SportEventServiceImpl implements SportEventService{
         if (!sportEventRepository.existsById(id)) {
             throw new SportEventNotFoundException();
         }
+    }
+
+    @Override
+    public List<SportEvent> getSportEventByFilters(Optional<Integer> activityId, Optional<Timestamp> startDate, Optional<String> town,
+                                                   Optional<Integer> author) {
+        Specification<SportEvent> spec = Specification.where(townIn(town))
+            .and(startDateIn(startDate))
+            .and(activityIn(activityId))
+            .and(authorIn(author));
+        return sportEventRepository.findAll(spec);
+    }
+
+    public static Specification<SportEvent> townIn(Optional<String> town){
+        return (root, query, builder) ->
+            town.isPresent() ?
+                root.get("town").in(town.get()) :
+                builder.conjunction();
+    }
+
+    public static Specification<SportEvent> startDateIn(Optional<Timestamp> startDate){
+        return (root, query, builder) ->
+            startDate.isPresent() ?
+                root.get("startDate").in(startDate.get()) :
+                builder.conjunction();
+    }
+
+    public static Specification<SportEvent> activityIn(Optional<Integer> activityId){
+        return (root, query, builder) ->
+            activityId.isPresent() ?
+                root.get("startDate").in(activityId.get()) :
+                builder.conjunction();
+    }
+
+    public static Specification<SportEvent> authorIn(Optional<Integer> author){
+        return (root, query, builder) ->
+            author.isPresent() ?
+                root.get("startDate").in(author.get()) :
+                builder.conjunction();
     }
 }
