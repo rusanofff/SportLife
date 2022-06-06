@@ -12,8 +12,7 @@ public class ActivityConverterImpl implements ConverterInterface<ActivityDto, Ac
                 dto.getId(),
                 dto.getName(),
                 dto.getActivityType(),
-                dto.getSportEventTypeOpportunities(),
-                dto.getStatus());
+                dto.getSportEventTypeOpportunities());
     }
 
     @Override
@@ -22,7 +21,6 @@ public class ActivityConverterImpl implements ConverterInterface<ActivityDto, Ac
                 model.getId(),
                 model.getName(),
                 model.getActivityType().getDisplayName(),
-                model.getSportEventTypeOpportunities().getDisplayName(),
-                model.getStatus().toString());
+                model.getSportEventTypeOpportunities().getDisplayName());
     }
 }

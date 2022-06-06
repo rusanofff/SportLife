@@ -29,7 +29,4 @@ public class Activity {
     @Column(name = "event_type_opportunities")
     private SportEventTypeOpportunities sportEventTypeOpportunities;
 
-    @Column(name = "entity_status")
-    private EntityStatus status;
-
 }

@@ -26,19 +26,14 @@ public class ActivityDto {
     @NotNull
     SportEventTypeOpportunities sportEventTypeOpportunities;
 
-    @NotNull
-    EntityStatus status;
-
     @JsonCreator
     public ActivityDto(@JsonProperty("id") Integer id,
                          @JsonProperty("name") String name,
                          @JsonProperty("activityType") String activityType,
-                         @JsonProperty("sportEventTypeOpportunities") String sportEventTypeOpportunities,
-                         @JsonProperty("status") String status) {
+                         @JsonProperty("sportEventTypeOpportunities") String sportEventTypeOpportunities) {
         this.id = id;
         this.name = name;
         this.activityType = ActivityType.createWithValue(activityType);
         this.sportEventTypeOpportunities = SportEventTypeOpportunities.createWithValue(sportEventTypeOpportunities);
-        this.status = EntityStatus.createWithValue(status);
     }
 }
