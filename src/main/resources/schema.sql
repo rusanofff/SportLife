@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS "user"
     CONSTRAINT "Profile_pkey" PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS SportEvent
+CREATE TABLE IF NOT EXISTS Sport_event
 (
     id integer NOT NULL,
     name character varying COLLATE pg_catalog."default" NOT NULL,
@@ -52,10 +52,10 @@ CREATE TABLE IF NOT EXISTS Team
     count integer NOT NULL,
     CONSTRAINT "Team_pkey" PRIMARY KEY (id),
     CONSTRAINT event_id FOREIGN KEY (event_id)
-        REFERENCES SportEvent (id)
+        REFERENCES Sport_event (id)
 );
 
-CREATE TABLE IF NOT EXISTS UserEvent
+CREATE TABLE IF NOT EXISTS User_event
 (
     user_id integer NOT NULL,
     event_id integer NOT NULL,
@@ -64,10 +64,10 @@ CREATE TABLE IF NOT EXISTS UserEvent
     CONSTRAINT account_id FOREIGN KEY (user_id)
         REFERENCES "user" (id),
     CONSTRAINT event_id FOREIGN KEY (event_id)
-        REFERENCES SportEvent (id)
+        REFERENCES Sport_event (id)
 );
 
-CREATE TABLE IF NOT EXISTS UserTeam
+CREATE TABLE IF NOT EXISTS User_team
 (
     id integer NOT NULL,
     user_id integer NOT NULL,
