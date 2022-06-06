@@ -15,7 +15,6 @@ import javax.persistence.*;
 public class UserSportEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Integer id;
 
     @ManyToOne

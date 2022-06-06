@@ -49,7 +49,7 @@ public class SportEventServiceImpl implements SportEventService{
         Integer activityId  = activity.getId();
         activityService.assertActivityExists(activityId);
 
-        if (sportEventRepository.existsByNameAndStartDateAndProfileIdAndActivityId(
+        if (sportEventRepository.existsByNameAndStartDateAndUserIdAndActivityId(
                 sportEvent.getName(), sportEvent.getStartDate(), profileId, activityId)){
             throw new EntityAlreadyExistsException();
         }
@@ -67,7 +67,7 @@ public class SportEventServiceImpl implements SportEventService{
         Integer activityIdFromJson = givenSportEvent.getActivity().getId();
         activityService.assertActivityExists(activityIdFromJson);
 
-        if (sportEventRepository.existsByNameAndStartDateAndProfileIdAndActivityId(
+        if (sportEventRepository.existsByNameAndStartDateAndUserIdAndActivityId(
                 givenSportEvent.getName(),
                 givenSportEvent.getStartDate(),
                 profileIdFromJson,

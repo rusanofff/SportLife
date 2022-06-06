@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User insertUser(User user) {
-        if (userRepository.existsParticipantByFullNameAndDateOfBirth(user.getName(),
+        if (userRepository.existsParticipantByNameAndSurnameAndDateOfBirth(user.getName(),
                 user.getSurname(), user.getDateOfBirth())){
             throw new EntityAlreadyExistsException();
         }
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService{
     public User putById(Integer id, User givenUserFromJson) {
         assertUserExists(id);
         givenUserFromJson.setId(id);
-        User userUnique = userRepository.findByFullNameAndDateOfBirth(
+        User userUnique = userRepository.findByNameAndSurnameAndDateOfBirth(
                 givenUserFromJson.getName(), givenUserFromJson.getSurname(),
         givenUserFromJson.getDateOfBirth());
 

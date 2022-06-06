@@ -40,7 +40,7 @@ public class UserSportEventServiceImpl implements UserSportEventService {
     @Override
     public List<UserSportEvent> findByUserId(Integer id) {
         userService.assertUserExists(id);
-        return new ArrayList<>(userSportEventRepository.findByProfile_Id(id));
+        return new ArrayList<>(userSportEventRepository.findByUserId(id));
     }
 
     @Override
@@ -57,7 +57,7 @@ public class UserSportEventServiceImpl implements UserSportEventService {
         userService.assertUserExists(profileId);
         sportEventService.assertSportEventExists(sportEventId);
 
-        if (userSportEventRepository.existsByProfile_IdAndSportEvent_Id(profileId, sportEventId)){
+        if (userSportEventRepository.existsByUserIdAndSportEventId(profileId, sportEventId)){
             throw new EntityAlreadyExistsException();
         }
 
@@ -83,7 +83,7 @@ public class UserSportEventServiceImpl implements UserSportEventService {
         sportEventService.assertSportEventExists(sportEventId);
 
         UserSportEvent
-            userSportEvent = userSportEventRepository.getByProfile_IdAndSportEvent_Id(profileId, sportEventId);
+            userSportEvent = userSportEventRepository.getByUserIdAndSportEventId(profileId, sportEventId);
 
         if (userSportEvent != null && !Objects.equals(userSportEvent.getId(), id)){
             throw new MismatchedException();

@@ -14,7 +14,6 @@ import java.sql.Timestamp;
 public class SportEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "event_id")
     private Integer id;
 
     @Column(name = "name")

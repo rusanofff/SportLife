@@ -58,7 +58,7 @@ public class TeamController {
         return converter.toDto(deletedTeam);
     }
 
-    @PutMapping(path = "/user/{id}")
+    @PutMapping(path = "/team/{id}")
     public TeamDto putTeam(@PathVariable(name = "id") Integer id,
                            @Valid @RequestBody TeamDto teamDto) {
         Team team = converter.fromDto(teamDto);

@@ -37,13 +37,13 @@ public class UserTeamServiceImpl implements UserTeamService {
     @Override
     public List<UserTeam> findByUserId(Integer id) {
         userService.assertUserExists(id);
-        return new ArrayList<>(userTeamRepository.findByProfile_Id(id));
+        return new ArrayList<>(userTeamRepository.findByUserId(id));
     }
 
     @Override
     public List<UserTeam> findByTeamId(Integer id) {
         teamService.assertTeamExists(id);
-        return new ArrayList<>(userTeamRepository.findByTeam_id(id));
+        return new ArrayList<>(userTeamRepository.findByTeamId(id));
     }
 
     @Override
@@ -54,7 +54,7 @@ public class UserTeamServiceImpl implements UserTeamService {
         userService.assertUserExists(profileId);
         teamService.assertTeamExists(teamId);
 
-        if (userTeamRepository.existsByProfile_IdAndTeam_Id(profileId, teamId)){
+        if (userTeamRepository.existsByUserIdAndTeamId(profileId, teamId)){
             throw new EntityAlreadyExistsException();
         }
         return userTeamRepository.save(userTeam);
@@ -78,7 +78,7 @@ public class UserTeamServiceImpl implements UserTeamService {
         Integer teamId = givenUserTeam.getTeam().getId();
         teamService.assertTeamExists(teamId);
 
-        UserTeam userTeam = userTeamRepository.getByProfile_IdAndTeam_Id(profileId, teamId);
+        UserTeam userTeam = userTeamRepository.getByUserIdAndTeamId(profileId, teamId);
 
         if (userTeam != null && !Objects.equals(userTeam.getId(), id)){
             throw new MismatchedException();

@@ -16,7 +16,6 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "user_id")
     private Integer id;
 
     @Column(name = "name")

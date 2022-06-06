@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface UserTeamRepository extends JpaRepository<UserTeam, Integer> {
-    List<UserTeam> findByProfile_Id(Integer profile_id);
+    List<UserTeam> findByUserId(Integer profile_id);
 
-    List<UserTeam> findByTeam_id(Integer team_id);
+    List<UserTeam> findByTeamId(Integer team_id);
 
-    UserTeam getByProfile_IdAndTeam_Id(Integer profile_id, Integer team_id);
+    UserTeam getByUserIdAndTeamId(Integer profile_id, Integer team_id);
 
-    boolean existsByProfile_IdAndTeam_Id(Integer profile_id, Integer team_id);
+    boolean existsByUserIdAndTeamId(Integer profile_id, Integer team_id);
 }

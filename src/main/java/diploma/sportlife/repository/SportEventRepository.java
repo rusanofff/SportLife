@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface SportEventRepository extends JpaRepository<SportEvent, Integer>,
     JpaSpecificationExecutor<SportEvent> {
-    boolean existsByNameAndStartDateAndProfileIdAndActivityId(String name,
+    boolean existsByNameAndStartDateAndUserIdAndActivityId(String name,
                                                           Timestamp startDate,
                                                           Integer profileId,
                                                               Integer activityId);

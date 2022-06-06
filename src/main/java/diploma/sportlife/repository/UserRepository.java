@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    boolean existsParticipantByFullNameAndDateOfBirth(String name, String surname, Date dateOfBirth);
+    boolean existsParticipantByNameAndSurnameAndDateOfBirth(String name, String surname, Date dateOfBirth);
 
-    User findByFullNameAndDateOfBirth(String name, String surname, Date dateOfBirth);
+    User findByNameAndSurnameAndDateOfBirth(String name, String surname, Date dateOfBirth);
 }
