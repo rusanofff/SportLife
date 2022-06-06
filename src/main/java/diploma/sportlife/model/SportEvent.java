@@ -31,18 +31,15 @@ public class SportEvent {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     @EqualsAndHashCode.Exclude
     private User user;
 
     @Column(name = "town")
     private String town;
 
-    @Column(name = "longitude")
-    private String longitude;
-
-    @Column(name = "latitude")
-    private String latitude;
+    @Column(name = "adress")
+    private String address;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "activity_id", referencedColumnName = "id")

@@ -36,11 +36,7 @@ public class SportEventDto {
 
     @NotNull
     @NotBlank
-    String longitude;
-
-    @NotNull
-    @NotBlank
-    String latitude;
+    String address;
 
     @NotNull
     Integer activityId;
@@ -58,8 +54,7 @@ public class SportEventDto {
                          @JsonProperty("sportEventType") String eventType,
                          @JsonProperty("profileId") Integer profileId,
                          @JsonProperty("town") String town,
-                         @JsonProperty("longitude") String longitude,
-                         @JsonProperty("latitude") String latitude,
+                         @JsonProperty("longitude") String address,
                          @JsonProperty("activityId") Integer activityId,
                          @JsonProperty("description") String description,
                          @JsonProperty("minCount") Integer minCount,
@@ -70,8 +65,7 @@ public class SportEventDto {
         this.sportEventType = SportEventType.createWithValue(eventType);
         this.profileId = profileId;
         this.town = town;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.address = address;
         this.activityId = activityId;
         this.description = description;
         this.minCount = minCount;
