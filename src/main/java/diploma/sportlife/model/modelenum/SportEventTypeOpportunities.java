@@ -16,7 +16,7 @@ public enum SportEventTypeOpportunities {
 
     public static SportEventTypeOpportunities createWithValue(String type) {
         for (SportEventTypeOpportunities sportEventTypeOpportunities : values()) {
-            if (sportEventTypeOpportunities.toString().equals(type)) {
+            if (sportEventTypeOpportunities.getDisplayName().equals(type)) {
                 return sportEventTypeOpportunities;
             }
         }

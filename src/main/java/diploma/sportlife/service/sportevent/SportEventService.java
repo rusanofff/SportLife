@@ -19,6 +19,8 @@ public interface SportEventService {
 
     void assertSportEventExists(Integer id);
 
+    List<SportEvent> findByUserId(Integer id);
+
     List<SportEvent> getSportEventByFilters(Optional<Integer> activityId, Optional<Timestamp> startDate, Optional<String> town,
                                             Optional<Integer> author);
 }

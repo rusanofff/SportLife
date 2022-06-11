@@ -14,9 +14,10 @@ public enum SportEventType {
     }
 
     public static SportEventType createWithValue(String type) {
-        for (SportEventType sportEventParticipants : values()) {
-            if (sportEventParticipants.toString().equals(type)) {
-                return sportEventParticipants;
+        for (SportEventType sportEventType : values()) {
+            if (sportEventType.getDisplayName().equals(type)) {
+                System.out.println(type + " " + sportEventType);
+                return sportEventType;
             }
         }
         throw new InvalidSportEventTypeException(type);

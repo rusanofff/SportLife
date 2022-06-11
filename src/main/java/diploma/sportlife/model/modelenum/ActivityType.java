@@ -3,6 +3,8 @@ package diploma.sportlife.model.modelenum;
 import diploma.sportlife.exception.invalid.InvalidActivityTypeException;
 import diploma.sportlife.exception.invalid.InvalidSportEventTypeException;
 
+import java.util.Arrays;
+
 public enum ActivityType {
     PERSONAL("особистий"),
     TEAM("командний"),
@@ -17,11 +19,12 @@ public enum ActivityType {
 
     public static ActivityType createWithValue(String type) {
         for (ActivityType activityType : values()) {
-            if (activityType.toString().equals(type)) {
+            if (activityType.getDisplayName().equals(type)) {
                 return activityType;
             }
         }
         throw new InvalidActivityTypeException(type);
+        //return null;
     }
 
     public String getDisplayName() {

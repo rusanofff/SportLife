@@ -94,6 +94,10 @@ public class SportEventServiceImpl implements SportEventService{
     }
 
     @Override
+    public List<SportEvent> findByUserId(Integer id) {
+        return sportEventRepository.findByUserId(id);
+    }
+    @Override
     public List<SportEvent> getSportEventByFilters(Optional<Integer> activityId, Optional<Timestamp> startDate, Optional<String> town,
                                                    Optional<Integer> author) {
         Specification<SportEvent> spec = Specification.where(townIn(town))

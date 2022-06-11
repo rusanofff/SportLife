@@ -21,7 +21,9 @@ public class SportEventConverterImpl implements ConverterInterface<SportEventDto
                 dto.getAddress(),
                 Activity.builder().id(dto.getActivityId()).build(),
                 dto.getMinCount(),
-                dto.getMaxCount()
+                dto.getMaxCount(),
+                dto.getMinCountTeam(),
+                dto.getMaxCountTeam()
         );
     }
 
@@ -31,14 +33,16 @@ public class SportEventConverterImpl implements ConverterInterface<SportEventDto
                 model.getId(),
                 model.getName(),
                 model.getStartDate(),
-                model.getSportEventType().toString(),
+                model.getSportEventType().getDisplayName(),
                 model.getUser().getId(),
                 model.getTown(),
                 model.getAddress(),
                 model.getActivity().getId(),
                 model.getDescription(),
                 model.getMinCount(),
-                model.getMaxCount()
+                model.getMaxCount(),
+                model.getMaxCountTeam(),
+                model.getMinCountTeam()
         );
     }
 }

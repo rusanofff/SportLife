@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "user"
     phone character varying COLLATE pg_catalog."default",
     town character varying COLLATE pg_catalog."default" NOT NULL,
     date_of_birth date,
-    image bytea[],
+    image bytea,
     CONSTRAINT "Profile_pkey" PRIMARY KEY (id)
 );
 

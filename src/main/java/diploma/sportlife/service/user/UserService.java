@@ -16,4 +16,6 @@ public interface UserService {
     User putById(Integer id, User givenUserFromJson);
 
     void assertUserExists(Integer id);
+
+    User findByEmail(String email);
 }

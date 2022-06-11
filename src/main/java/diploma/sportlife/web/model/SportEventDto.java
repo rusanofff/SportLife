@@ -47,6 +47,10 @@ public class SportEventDto {
     @NotNull
     Integer maxCount;
 
+    Integer minCountTeam;
+
+    Integer maxCountTeam;
+
     @JsonCreator
     public SportEventDto(@JsonProperty("id") Integer id,
                          @JsonProperty("name") String name,
@@ -54,11 +58,13 @@ public class SportEventDto {
                          @JsonProperty("sportEventType") String eventType,
                          @JsonProperty("profileId") Integer profileId,
                          @JsonProperty("town") String town,
-                         @JsonProperty("longitude") String address,
+                         @JsonProperty("address") String address,
                          @JsonProperty("activityId") Integer activityId,
                          @JsonProperty("description") String description,
                          @JsonProperty("minCount") Integer minCount,
-                         @JsonProperty("maxCount") Integer maxCount){
+                         @JsonProperty("maxCount") Integer maxCount,
+                         @JsonProperty("maxCountTeam") Integer maxCountTeam,
+                         @JsonProperty("minCountTeam") Integer minCountTeam){
         this.id = id;
         this.name = name;
         this.startDate = startDate;
@@ -70,5 +76,7 @@ public class SportEventDto {
         this.description = description;
         this.minCount = minCount;
         this.maxCount = maxCount;
+        this.maxCountTeam = maxCountTeam;
+        this.minCountTeam = maxCountTeam;
     }
 }

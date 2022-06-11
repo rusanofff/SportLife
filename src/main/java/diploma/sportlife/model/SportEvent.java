@@ -20,7 +20,6 @@ public class SportEvent {
     private String name;
 
     @Column(name = "event_type")
-    @Enumerated(EnumType.STRING)
     private SportEventType sportEventType;
 
     @Column(name = "start_date")
@@ -50,4 +49,10 @@ public class SportEvent {
 
     @Column(name = "max_count")
     private Integer maxCount;
+
+    @Column(name = "min_count_team")
+    private Integer minCountTeam;
+
+    @Column(name = "max_count_team")
+    private Integer maxCountTeam;
 }

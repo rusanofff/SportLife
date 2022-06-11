@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,10 +37,20 @@ public class UserController {
                       .collect(Collectors.toList());
     }
 
-    @GetMapping("/user")
+    @GetMapping("/login")
+    public void login() {
+
+    }
+
+    @GetMapping("/user/{id}")
     public UserDto getUser(@PathVariable(name = "id") Integer id){
         User user = service.findById(id);
         return converter.toDto(user);
+    }
+
+    @GetMapping("/user")
+    public UserDto getUserByEmail(@RequestParam String email) {
+        return converter.toDto(service.findByEmail(email));
     }
 
     @PostMapping(path = "/user")

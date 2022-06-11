@@ -4,6 +4,8 @@ import diploma.sportlife.model.SportEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.sql.Timestamp;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface SportEventRepository extends JpaRepository<SportEvent, Integer>,
@@ -12,4 +14,5 @@ public interface SportEventRepository extends JpaRepository<SportEvent, Integer>
                                                           Timestamp startDate,
                                                           Integer profileId,
                                                               Integer activityId);
+    List<SportEvent> findByUserId(Integer userId);
 }

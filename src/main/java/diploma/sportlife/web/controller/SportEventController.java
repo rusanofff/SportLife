@@ -43,10 +43,18 @@ public class SportEventController {
                       .collect(Collectors.toList());
     }
 
-    @GetMapping("/event")
+    @GetMapping("/event/{id}")
     public SportEventDto getSportEvent(@PathVariable(name = "id") Integer id){
         SportEvent sportEvent = service.findById(id);
         return converter.toDto(sportEvent);
+    }
+
+    @GetMapping("/event")
+    public List<SportEventDto> getSportEventByUserId(@RequestParam(name = "userId") Integer userId){
+        List<SportEvent> sportEvent = service.findByUserId(userId);
+        return sportEvent.stream()
+                .map(converter::toDto)
+                .collect(Collectors.toList());
     }
 
     @PostMapping("/event")

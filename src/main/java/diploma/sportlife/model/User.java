@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -43,6 +44,7 @@ public class User {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @Type(type="org.hibernate.type.BinaryType")
     @Column(name = "image")
     private Byte[] image;
 }
