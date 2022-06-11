@@ -5,6 +5,8 @@ import diploma.sportlife.exception.MismatchedException;
 import diploma.sportlife.exception.notfound.UserNotFoundException;
 import diploma.sportlife.model.User;
 import diploma.sportlife.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ import java.util.Objects;
 @Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -35,6 +40,7 @@ public class UserServiceImpl implements UserService{
                 user.getSurname(), user.getDateOfBirth())){
             throw new EntityAlreadyExistsException();
         }
+        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
