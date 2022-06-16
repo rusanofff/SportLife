@@ -2,11 +2,14 @@ package diploma.sportlife.web.controller;
 
 import diploma.sportlife.converter.TeamConverterImpl;
 import diploma.sportlife.converter.UserConverterImpl;
+import diploma.sportlife.converter.UserSportEventConverterImpl;
 import diploma.sportlife.converter.UserTeamConverterImpl;
 import diploma.sportlife.model.UserTeam;
+import diploma.sportlife.service.usersportevent.UserSportEventService;
 import diploma.sportlife.service.userteam.UserTeamService;
 import diploma.sportlife.web.model.TeamDto;
 import diploma.sportlife.web.model.UserDto;
+import diploma.sportlife.web.model.UserSportEventDto;
 import diploma.sportlife.web.model.UserTeamDto;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,20 +22,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class UserTeamController {
     private final UserTeamService service;
 
+    private final UserSportEventService userSportEventService;
     private final UserTeamConverterImpl userTeamConverter;
+    private final UserSportEventConverterImpl userSportEventConverter;
 
     private final UserConverterImpl userConverter;
 
     private final TeamConverterImpl teamConverter;
 
-    public UserTeamController(UserTeamService service, UserTeamConverterImpl userTeamConverter,
-                              UserConverterImpl userConverter, TeamConverterImpl teamConverter) {
+    public UserTeamController(UserTeamService service, UserSportEventService userSportEventService, UserTeamConverterImpl userTeamConverter,
+                               UserSportEventConverterImpl userSportEventConverter, UserConverterImpl userConverter, TeamConverterImpl teamConverter) {
         this.service = service;
+        this.userSportEventService = userSportEventService;
         this.userTeamConverter = userTeamConverter;
+        this.userSportEventConverter = userSportEventConverter;
         this.userConverter = userConverter;
         this.teamConverter = teamConverter;
     }
@@ -53,7 +62,7 @@ public class UserTeamController {
 
     @GetMapping(path = "/user-team/user/{id}")
     public List<UserDto> getUserTeamByUserId(@PathVariable(name = "id") Integer id) {
-        return service.findByUserId(id)
+        return service.findByTeamId(id)
                       .stream()
                       .map(userTeam -> userConverter.toDto(userTeam.getUser()))
                       .collect(Collectors.toList());

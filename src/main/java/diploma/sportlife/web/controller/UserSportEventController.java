@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
-public class UserSportEventController {
+@RestController
+public class  UserSportEventController {
     private final UserSportEventService service;
 
     private final UserSportEventConverterImpl userSportEventConverter;
@@ -54,16 +56,16 @@ public class UserSportEventController {
     }
 
     @GetMapping(path = "/user-event/user/{id}")
-    public List<UserDto> getUserSportEventByUserId(@PathVariable(name = "id") Integer id) {
-        return service.findByUserId(id)
+    public List<UserDto> getUserSportEventBySportEventId(@PathVariable(name = "id") Integer id) {
+        return service.findBySportEventId(id)
                       .stream()
                       .map(userSportEvent -> userConverter.toDto(userSportEvent.getUser()))
                       .collect(Collectors.toList());
     }
 
     @GetMapping(path = "/user-event/event/{id}")
-    public List<SportEventDto> getUserSportEventBySportEventId(@PathVariable(name = "id") Integer id) {
-        return service.findBySportEventId(id)
+    public List<SportEventDto> getUserSportEventByUserId(@PathVariable(name = "id") Integer id) {
+        return service.findByUserId(id)
                       .stream()
                       .map(userSportEvent -> sportEventConverter.toDto(userSportEvent.getSportEvent()))
                       .collect(Collectors.toList());

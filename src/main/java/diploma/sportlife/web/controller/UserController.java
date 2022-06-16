@@ -4,6 +4,8 @@ import diploma.sportlife.converter.UserConverterImpl;
 import diploma.sportlife.model.User;
 import diploma.sportlife.service.user.UserService;
 import diploma.sportlife.web.model.UserDto;
+
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
@@ -68,8 +70,7 @@ public class UserController {
     }
 
     @PutMapping(path = "/user/{id}")
-    public UserDto putUser(@PathVariable(name = "id") Integer id,
-                                         @Valid @RequestBody UserDto userDto) {
+    public UserDto putUser(@PathVariable(name = "id") Integer id, @RequestBody UserDto userDto) {
         User user = converter.fromDto(userDto);
         User updatedUser = service.putById(id, user);
         return converter.toDto(updatedUser);

@@ -30,9 +30,9 @@ public class TeamController {
         this.converter = converter;
     }
 
-    @GetMapping("/teams")
-    public List<TeamDto> getTeamList(){
-        return service.readAll()
+    @GetMapping("/teams/{id}")
+    public List<TeamDto> getTeamList(@PathVariable Integer id){
+        return service.readAll(id)
             .stream()
             .map(converter::toDto)
             .collect(Collectors.toList());

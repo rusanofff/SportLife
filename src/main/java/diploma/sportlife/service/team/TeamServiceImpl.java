@@ -22,9 +22,11 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @Override
-    public List<Team> readAll() {
-        return new ArrayList<>(teamRepository.findAll());
+    public List<Team> readAll(Integer id) {
+
+        return new ArrayList<>(teamRepository.findBySportEvent(sportEventService.findById(id)));
     }
+
 
     @Override
     public Team findById(Integer id) {

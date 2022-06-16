@@ -77,6 +77,6 @@ public class SportEventDto {
         this.minCount = minCount;
         this.maxCount = maxCount;
         this.maxCountTeam = maxCountTeam;
-        this.minCountTeam = maxCountTeam;
+        this.minCountTeam = minCountTeam;
     }
 }

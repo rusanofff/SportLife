@@ -20,7 +20,7 @@ public class UserSportEventDto {
 
     @JsonCreator
     public UserSportEventDto(@JsonProperty("id") Integer id,
-                             @JsonProperty("disciplineId") Integer userId,
+                             @JsonProperty("userId") Integer userId,
                              @JsonProperty("sportEventId") Integer sportEventId) {
         this.id = id;
         this.userId = userId;

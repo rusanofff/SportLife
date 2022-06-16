@@ -46,7 +46,7 @@ public class UserSportEventServiceImpl implements UserSportEventService {
     @Override
     public List<UserSportEvent> findBySportEventId(Integer id) {
         sportEventService.assertSportEventExists(id);
-        return new ArrayList<>(userSportEventRepository.findBySportEvent_id(id));
+        return new ArrayList<>(userSportEventRepository.findBySportEventId(id));
     }
 
     @Override

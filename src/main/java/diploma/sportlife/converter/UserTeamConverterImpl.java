@@ -4,7 +4,9 @@ import diploma.sportlife.model.User;
 import diploma.sportlife.model.UserTeam;
 import diploma.sportlife.model.Team;
 import diploma.sportlife.web.model.UserTeamDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserTeamConverterImpl implements ConverterInterface<UserTeamDto, UserTeam>{
     @Override
     public UserTeam fromDto(UserTeamDto dto) {

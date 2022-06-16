@@ -100,6 +100,7 @@ public class SportEventServiceImpl implements SportEventService{
     @Override
     public List<SportEvent> getSportEventByFilters(Optional<Integer> activityId, Optional<Timestamp> startDate, Optional<String> town,
                                                    Optional<Integer> author) {
+
         Specification<SportEvent> spec = Specification.where(townIn(town))
             .and(startDateIn(startDate))
             .and(activityIn(activityId))
@@ -124,14 +125,14 @@ public class SportEventServiceImpl implements SportEventService{
     public static Specification<SportEvent> activityIn(Optional<Integer> activityId){
         return (root, query, builder) ->
             activityId.isPresent() ?
-                root.get("startDate").in(activityId.get()) :
+                root.get("activity").in(activityId.get()) :
                 builder.conjunction();
     }
 
     public static Specification<SportEvent> authorIn(Optional<Integer> author){
         return (root, query, builder) ->
             author.isPresent() ?
-                root.get("startDate").in(author.get()) :
+                root.get("author").in(author.get()) :
                 builder.conjunction();
     }
 }

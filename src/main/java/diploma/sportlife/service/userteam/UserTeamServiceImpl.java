@@ -42,7 +42,7 @@ public class UserTeamServiceImpl implements UserTeamService {
 
     @Override
     public List<UserTeam> findByTeamId(Integer id) {
-        teamService.assertTeamExists(id);
+//        teamService.assertTeamExists(id);
         return new ArrayList<>(userTeamRepository.findByTeamId(id));
     }
 

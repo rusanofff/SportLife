@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 
 @Value
-public class TeamDto {
+public class  TeamDto {
     @Null
     Integer id;
 
