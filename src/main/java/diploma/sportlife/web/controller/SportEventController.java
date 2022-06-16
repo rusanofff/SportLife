@@ -73,7 +73,7 @@ public class SportEventController {
 
     @PutMapping(path = "/event/{id}")
     public SportEventDto putSportEvent(@PathVariable(name = "id") Integer id,
-                                  @Valid @RequestBody SportEventDto eventDto) {
+                                  @RequestBody SportEventDto eventDto) {
         SportEvent givenSportEvent = converter.fromDto(eventDto);
         SportEvent updatedSportEvent = service.putById(id, givenSportEvent);
         return converter.toDto(updatedSportEvent);
